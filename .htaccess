@@ -1,0 +1,19 @@
+### HAIKAL GANTENG ###
+
+# Hapus .html
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+</IfModule>
+
+# Url ga cocok ke 403 | 404
+ErrorDocument 403 /https://www.haikalylstnsyh.xyz/404.html
+ErrorDocument 404 /404.html
+
+# Index
+DirectoryIndex home.html
+
+# Gabisa liat directory
+Options -Indexes
