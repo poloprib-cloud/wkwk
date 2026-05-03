@@ -1,6 +1,85 @@
 <!doctype html>
 <html>
 <head>
+  <style>
+    :root {
+        --primary-blue: #58a6ff;
+        --dark-bg: rgba(13, 17, 23, 0.75);
+        --border-color: #30363d;
+    }
+
+    .kallpolo-ip-card {
+        background: var(--dark-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 20px;
+        max-width: 550px;
+        margin: 20px auto;
+        font-family: 'Segoe UI', Consolas, monospace;
+        color: #c9d1d9;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .kallpolo-ip-card h2 {
+        color: var(--primary-blue);
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .data-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .data-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        border-bottom: 1px solid rgba(48, 54, 61, 0.3);
+        padding-bottom: 4px;
+    }
+
+    .label {
+        color: #8b949e;
+    }
+
+    .value {
+        color: #ffffff;
+        font-weight: 500;
+        text-align: right;
+    }
+
+    .ip-glow {
+        color: var(--primary-blue);
+        font-weight: bold;
+        text-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
+    }
+
+    .btn-refresh {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px;
+        background: transparent;
+        border: 1px solid var(--primary-blue);
+        color: var(--primary-blue);
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .btn-refresh:hover {
+        background: var(--primary-blue);
+        color: #0d1117;
+    }
+</style>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +97,7 @@
   <link rel="stylesheet" href="css/plugins/fancybox.min.css">
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css">
-  <title>Kallpolo | Check IP</title>
+  <title>Kallpolo | Cek IP</title>
   <!-- LIVE CHAT -->
       <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="bd72bff2-13ff-4cbf-b899-54e0a47e5336";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 
@@ -83,8 +162,6 @@
             <!-- info bar header end -->
             <!-- scroll frame -->
             <div id="scrollbar2" class="art-scroll-frame">
-
-
             </div>
             <!-- scroll frame end -->
           </div>
@@ -114,24 +191,55 @@
                   <div class="col-lg-12">
                     <!-- section title -->
                     <div class="art-section-title">
-                      <!-- title frame -->
-                      <div class="art-title-frame">
-                        <!-- title -->
-                        <h4>Check IpAddress</h4>
-                      </div>
-                      <!-- title frame end -->
+                    </div>
+                    <!-- section title end -->
+                  </div>
+                  <!-- col end -->
+                  <!-- col -->
+                  <div class="col-lg-4">
+                  </div>
+                  <!-- col end -->
+                  <!-- col -->
+                  <div class="col-lg-4">
+                  </div>
+                  
+                  <!-- col end -->
+                  <!-- col -->
+                  <div class="col-lg-12">
+                    <!-- section title -->
+                    <div class="art-section-title">
                     </div>
                     <!-- section title end -->
                   </div>
                   <!-- col end -->
                 </div>
                 <!-- row end -->
-                <div class="container">
-        <div class="row">
-            <div id="details" class="details col-md-6">
-            </div>
-        </div>
+                <div class="kallpolo-ip-card">
+    <h2>Network Intelligence</h2>
+    <div class="data-list" id="ip-data-list">
+        <div class="data-item"><span class="label">Your Ip Address:</span> <span id="ip" class="value ip-glow">Scanning...</span></div>
+        <div class="data-item"><span class="label">Your Ip version:</span> <span id="version" class="value">-</span></div>
+        <div class="data-item"><span class="label">City:</span> <span id="city" class="value">-</span></div>
+        <div class="data-item"><span class="label">Region:</span> <span id="region" class="value">-</span></div>
+        <div class="data-item"><span class="label">Region Code:</span> <span id="region_code" class="value">-</span></div>
+        <div class="data-item"><span class="label">Country:</span> <span id="country_name" class="value">-</span></div>
+        <div class="data-item"><span class="label">Country Capital:</span> <span id="country_capital" class="value">-</span></div>
+        <div class="data-item"><span class="label">Country Code:</span> <span id="country_code" class="value">-</span></div>
+        <div class="data-item"><span class="label">Country Alpha-3 Code:</span> <span id="country_code_iso3" class="value">-</span></div>
+        <div class="data-item"><span class="label">Latitude:</span> <span id="latitude" class="value">-</span></div>
+        <div class="data-item"><span class="label">Longitude:</span> <span id="longitude" class="value">-</span></div>
+        <div class="data-item"><span class="label">Timezone:</span> <span id="timezone" class="value">-</span></div>
+        <div class="data-item"><span class="label">Country area:</span> <span id="country_area" class="value">-</span></div>
+        <div class="data-item"><span class="label">Org:</span> <span id="org" class="value">-</span></div>
+        <div class="data-item"><span class="label">ASN:</span> <span id="asn" class="value">-</span></div>
+        <div class="data-item"><span class="label">Calling Code:</span> <span id="country_calling_code" class="value">-</span></div>
+        <div class="data-item"><span class="label">Currency:</span> <span id="currency" class="value">-</span></div>
+        <div class="data-item"><span class="label">Currency Name:</span> <span id="currency_name" class="value">-</span></div>
+        <div class="data-item"><span class="label">Languages:</span> <span id="languages" class="value">-</span></div>
+        <div class="data-item"><span class="label">Country Population:</span> <span id="country_population" class="value">-</span></div>
     </div>
+    <button class="btn-refresh" onclick="fetchIPData()">REFRESH DATA</button>
+</div>
               </div>
               <!-- container end -->
               <!-- container -->
@@ -323,6 +431,69 @@
 
     // Eksekusi langsung tanpa menunggu window.load yang mungkin terhambat script lain
     setTimeout(initWaifu, 1000);
+</script>
+<script>
+    const fields = [
+        'ip', 'version', 'city', 'region', 'region_code', 'country_name', 
+        'country_capital', 'country_code', 'country_code_iso3', 'latitude', 
+        'longitude', 'timezone', 'country_area', 'org', 'asn', 
+        'country_calling_code', 'currency', 'currency_name', 'languages', 
+        'country_population'
+    ];
+
+    // INI FUNGSI UTAMANYA
+    async function fetchIPData() {
+        const ipElement = document.getElementById('ip');
+        const btn = document.querySelector('.btn-refresh');
+        
+        if(ipElement) ipElement.innerText = "Scanning Network...";
+        if(btn) {
+            btn.disabled = true;
+            btn.innerText = "COOLDOWN (5s)";
+        }
+
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            if (!response.ok) throw new Error('Limit');
+            const data = await response.json();
+            
+            fields.forEach(field => {
+                const element = document.getElementById(field);
+                if (element) element.innerText = data[field] || 'N/A';
+            });
+
+        } catch (error) {
+            console.warn("Switching to fallback...");
+            try {
+                const resAlt = await fetch('https://ipwho.is/');
+                const d = await resAlt.json();
+                
+                // Mapping manual buat API cadangan (ipwho.is lebih lengkap dari ip-api)
+                if(document.getElementById('ip')) document.getElementById('ip').innerText = d.ip || 'N/A';
+                if(document.getElementById('city')) document.getElementById('city').innerText = d.city || 'N/A';
+                if(document.getElementById('region')) document.getElementById('region').innerText = d.region || 'N/A';
+                if(document.getElementById('org')) document.getElementById('org').innerText = d.connection.isp || 'N/A';
+                if(document.getElementById('asn')) document.getElementById('asn').innerText = d.connection.asn || 'N/A';
+                if(document.getElementById('timezone')) document.getElementById('timezone').innerText = d.timezone.id || 'N/A';
+                if(document.getElementById('latitude')) document.getElementById('latitude').innerText = d.latitude || 'N/A';
+                if(document.getElementById('longitude')) document.getElementById('longitude').innerText = d.longitude || 'N/A';
+                if(document.getElementById('country_name')) document.getElementById('country_name').innerText = d.country || 'N/A';
+            } catch (err) {
+                if(ipElement) ipElement.innerText = "Connection Timeout.";
+            }
+        } finally {
+            setTimeout(() => {
+                if(btn) {
+                    btn.disabled = false;
+                    btn.innerText = "REFRESH DATA";
+                }
+            }, 5000);
+        }
+    }
+
+    // CARA PALING AMPUH BIAR OTOMATIS: 
+    // Kita panggil langsung fungsinya di sini
+    fetchIPData();
 </script>
 </body>
 </html>
